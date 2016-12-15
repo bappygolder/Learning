@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*--------------------------------------------------
+Global CSS
+--------------------------------------------------*/
+* {
+    box-sizing:border-box;
+	background-color:#E1E1E1; /*temporary [remove]*/
+}
+
+/*end: Global CSS
+--------------------------------------------------*/
+
+
+
+
+/*--------------------------------------------------
+Structure
+--------------------------------------------------*/
+
+
+/*end: Structure
+--------------------------------------------------*/
+
+
+
+
+/*--------------------------------------------------
+Colors
+--------------------------------------------------*/
+
+
+/*end: Colors
+--------------------------------------------------*/
+
+
+
+
+/*--------------------------------------------------
+Fonts & Typography
+--------------------------------------------------*/
+
+
+/*end: Fonts & Typography
+--------------------------------------------------*/
+
+
+/*--------------------------------------------------
+Media Queries
+--------------------------------------------------*/
+
+/*If screen is bigger than given size below*/
+@media screen and (min-width: 500px) {
+
+}
+
+/*If screen is smaller than given size below*/
+/*try not use the following media query. Our goal
+is to go from small to large (mobile first or small 
+screen first.) So we don't usually want to apply 
+styles for screens when they are smaller than something
+we rather want to target something when screen gets
+bigger. */
+@media screen and (max-width: 500px) {
+
+}
+
+/*end: Media Queries
+--------------------------------------------------*/
+
+/*--------------------------------------------------
+Treehouse CSS
+--------------------------------------------------*/
+* {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+button {
+  background-color: rgb(82, 186, 179);
+  border-radius: 6px;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+}
+#placeholder {
+  height: 100px;
+  width: 100px;
+  padding: 50px;
+  margin: 50px auto;
+  border: 1px solid gray;
+  border-radius: 10px;  
+  font-size:80px;
+}
+
+/*end: Treeouse CSS
+--------------------------------------------------*/
