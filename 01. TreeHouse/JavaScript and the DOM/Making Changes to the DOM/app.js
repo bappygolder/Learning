@@ -2,7 +2,7 @@
 
 //get all the elements we need to work with
 const toggleButton = document.querySelector('button.toggle');
-const sectionToHide = document.querySelector('toggleSection');
+const sectionToHide = document.querySelector('#toggleSection');
 const p = document.querySelector('p.description');
 const input = document.querySelector('input');
 const button = document.querySelector('button.description');
@@ -15,9 +15,14 @@ button.addEventListener("click", () => {
 });
 
 //write function to toggle list menu on and off
-button.addEventListener("click", () => {
+toggleButton.addEventListener("click", () => {
 	"use strict";
-    p.innerHTML = input.value + ":";
+    if (sectionToHide.style.display != 'none'){
+		sectionToHide.style.display = 'none';	
+	} else {
+		sectionToHide.style.display = 'block';	
+	}
+	
 });
 
 
