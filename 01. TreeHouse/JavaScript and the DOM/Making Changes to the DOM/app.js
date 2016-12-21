@@ -17,9 +17,11 @@ button.addEventListener("click", () => {
 //write function to toggle list menu on and off
 toggleButton.addEventListener("click", () => {
 	"use strict";
-    if (sectionToHide.style.display != 'none'){
+    if (sectionToHide.style.display !== 'none'){
+		toggleButton.textContent = 'Show List';
 		sectionToHide.style.display = 'none';	
 	} else {
+		toggleButton.textContent = 'Hide List';
 		sectionToHide.style.display = 'block';	
 	}
 	
