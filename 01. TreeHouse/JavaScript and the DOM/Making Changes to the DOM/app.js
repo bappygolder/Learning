@@ -27,7 +27,6 @@ toggleButton.addEventListener('click', () => {
         toggleButton.textContent = 'Hide List Section';
         sectionToHide.style.display = addItemInput.value;
     }
-
 });
 
 //function to update list
