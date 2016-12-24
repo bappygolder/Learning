@@ -3,30 +3,38 @@
 //get all the elements we need to work with
 const toggleButton = document.querySelector('button.toggle');
 const sectionToHide = document.querySelector('#toggleSection');
-const p = document.querySelector('p.description');
-const input = document.querySelector('input');
-const button = document.querySelector('button.description');
+const descriptionP = document.querySelector('p.description');
+const descriptionInput = document.querySelector('input.description');
+const descriptionButton = document.querySelector('button.description');
+const addItemInput = document.querySelector('input.addItemInput');
+const addItemButton = document.querySelector('button.addItemButton');
+
 //const = document.querySelector('');
 
 //write function to change text to the text we want to chagne
-button.addEventListener("click", () => {
-	"use strict";
-    p.innerHTML = input.value + ":";
+descriptionButton.addEventListener("click", () => {
+    "use strict";
+    descriptionP.innerHTML = descriptionInput.value + ":";
 });
 
 //write function to toggle list menu on and off
-toggleButton.addEventListener("click", () => {
-	"use strict";
-    if (sectionToHide.style.display !== 'none'){
-		toggleButton.textContent = 'Show List';
-		sectionToHide.style.display = 'none';	
-	} else {
-		toggleButton.textContent = 'Hide List';
-		sectionToHide.style.display = 'block';	
-	}
-	
+toggleButton.addEventListener('click', () => {
+    "use strict";
+    if (sectionToHide.style.display !== 'none') {
+        toggleButton.textContent = 'Show List Section';
+        sectionToHide.style.display = 'none';
+    } else {
+        toggleButton.textContent = 'Hide List Section';
+        sectionToHide.style.display = addItemInput.value;
+    }
+
 });
 
+//function to update list
+addItemButton.addEventListener('click', () => {
+    let li = document.createElement('li');
+    li.textContent = 'hi';
+});
 
 //Lesson Notes:
 
@@ -34,4 +42,4 @@ toggleButton.addEventListener("click", () => {
 //p.title = "List Description";
 
 //For getting and setting class attribute '.class' does not work. This is an exception. For the class we need to use ".className"
-
+//..e class we need to use ".className"
