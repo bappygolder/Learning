@@ -34,8 +34,8 @@ addItemButton.addEventListener('click', () => {
     let ul = document.getElementsByTagName('ul')[0];
     let li = document.createElement('li');
     li.textContent = addItemInput.value;
-    addItemInput.value = '';
     ul.appendChild(li);
+    addItemInput.value = ''; //clear input after adding the item
 });
 
 //Lesson Notes:
