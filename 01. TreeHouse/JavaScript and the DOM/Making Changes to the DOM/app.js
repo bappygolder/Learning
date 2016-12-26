@@ -8,7 +8,7 @@ const descriptionInput = document.querySelector('input.description');
 const descriptionButton = document.querySelector('button.description');
 const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
-
+const removeItemButton = document.querySelector('button.removeItemButton');
 //const = document.querySelector('');
 
 //write function to change text to the text we want to chagne
@@ -31,11 +31,18 @@ toggleButton.addEventListener('click', () => {
 
 //function to update list
 addItemButton.addEventListener('click', () => {
-    let ul = document.getElementsByTagName('ul')[0];
+    let ul = document.querySelector('ul');
     let li = document.createElement('li');
     li.textContent = addItemInput.value;
     ul.appendChild(li);
     addItemInput.value = ''; //clear input after adding the item
+});
+
+//remove the last item from the list on button click
+removeItemButton.addEventListener('click', () => {
+    let ul = document.querySelector('ul');
+    let li = document.querySelector('li:last-child');
+    ul.removeChild(li);
 });
 
 //Lesson Notes:
@@ -44,4 +51,4 @@ addItemButton.addEventListener('click', () => {
 //p.title = "List Description";
 
 //For getting and setting class attribute '.class' does not work. This is an exception. For the class we need to use ".className"
-//..e class we need to use ".className"
+//..e class we need to use ".className
