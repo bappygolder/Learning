@@ -9,12 +9,33 @@ const descriptionButton = document.querySelector('button.description');
 const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const removeItemButton = document.querySelector('button.removeItemButton');
+const listItems = document.querySelectorAll('li');
 //const = document.querySelector('');
+
+//create upper and lower case from an array
+//itemsArray - an array that holds all the elemetns
+//pos - position of the array where we menipulate value
+const upperAndLowerCase = (itemsArray, pos) => {
+    itemsArray[pos].addEventListener('mouseover', () => { //onmouseover make uppercase
+        itemsArray[pos].textContent = itemsArray[pos].textContent.toUpperCase();
+    });
+
+    itemsArray[pos].addEventListener('mouseout', () => { //onmousout make lowercase
+        itemsArray[pos].textContent = itemsArray[pos].textContent.toLowerCase();
+    });
+};
+
+//make all the list items upper case on hover
+for (var i = 0; i < listItems.length; i += 1) {
+    upperAndLowerCase(listItems, i);
+}
 
 //write function to change text to the text we want to chagne
 descriptionButton.addEventListener("click", () => {
     "use strict";
     descriptionP.innerHTML = descriptionInput.value + ":";
+    descriptionInput.value = '';
+
 });
 
 //write function to toggle list menu on and off
