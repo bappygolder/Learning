@@ -2,7 +2,7 @@
 
 //get all the elements we need to work with
 const toggleButton = document.querySelector('button.toggle');
-const sectionToHide = document.querySelector('#toggleSection');
+const listSection = document.querySelector('#listSection');
 const descriptionP = document.querySelector('p.description');
 const descriptionInput = document.querySelector('input.description');
 const descriptionButton = document.querySelector('button.description');
@@ -15,6 +15,8 @@ const listItems = document.querySelectorAll('li');
 //create upper and lower case from an array
 //itemsArray - an array that holds all the elemetns
 //pos - position of the array where we menipulate value
+//commenting this section out because there is a better way to achive the same result
+/*
 const upperAndLowerCase = (itemsArray, pos) => {
     itemsArray[pos].addEventListener('mouseover', () => { //onmouseover make uppercase
         itemsArray[pos].textContent = itemsArray[pos].textContent.toUpperCase();
@@ -24,11 +26,26 @@ const upperAndLowerCase = (itemsArray, pos) => {
         itemsArray[pos].textContent = itemsArray[pos].textContent.toLowerCase();
     });
 };
+*/
+
+//alternative way to get the same result
+listSection.addEventListener('mouseover', (event) => { //onmouseover make uppercase
+    if (event.target.tagName == 'LI') {
+        event.target.textContent = event.target.textContent.toUpperCase();
+    }
+});
+
+listSection.addEventListener('mouseout', (event) => { //onmousout make lowercase
+    if (event.target.tagName == 'LI') {
+        event.target.textContent = event.target.textContent.toLowerCase();
+    }
+});
+
 
 //make all the list items upper case on hover
-for (var i = 0; i < listItems.length; i += 1) {
-    upperAndLowerCase(listItems, i);
-}
+// for (var i = 0; i < listItems.length; i += 1) {
+//     upperAndLowerCase(listItems, i);
+// }
 
 //write function to change text to the text we want to chagne
 descriptionButton.addEventListener("click", () => {
@@ -41,12 +58,12 @@ descriptionButton.addEventListener("click", () => {
 //write function to toggle list menu on and off
 toggleButton.addEventListener('click', () => {
     "use strict";
-    if (sectionToHide.style.display !== 'none') {
+    if (listSection.style.display !== 'none') {
         toggleButton.textContent = 'Show List Section';
-        sectionToHide.style.display = 'none';
+        listSection.style.display = 'none';
     } else {
         toggleButton.textContent = 'Hide List Section';
-        sectionToHide.style.display = addItemInput.value;
+        listSection.style.display = addItemInput.value;
     }
 });
 
