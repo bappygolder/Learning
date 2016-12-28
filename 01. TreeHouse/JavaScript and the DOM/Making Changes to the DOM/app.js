@@ -3,6 +3,7 @@
 //get all the elements we need to work with
 const toggleButton = document.querySelector('button.toggle');
 const listSection = document.querySelector('#listSection');
+const listUl = listSection.querySelector('ul');
 const descriptionP = document.querySelector('p.description');
 const descriptionInput = document.querySelector('input.description');
 const descriptionButton = document.querySelector('button.description');
@@ -10,6 +11,7 @@ const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const removeItemButton = document.querySelector('button.removeItemButton');
 const listItems = document.querySelectorAll('li');
+const mainH1 = document.querySelector('#myHeading');
 //const = document.querySelector('');
 
 //create upper and lower case from an array
@@ -29,6 +31,7 @@ const upperAndLowerCase = (itemsArray, pos) => {
 */
 
 //alternative way to get the same result
+/*
 listSection.addEventListener('mouseover', (event) => { //onmouseover make uppercase
     if (event.target.tagName == 'LI') {
         event.target.textContent = event.target.textContent.toUpperCase();
@@ -38,6 +41,47 @@ listSection.addEventListener('mouseover', (event) => { //onmouseover make upperc
 listSection.addEventListener('mouseout', (event) => { //onmousout make lowercase
     if (event.target.tagName == 'LI') {
         event.target.textContent = event.target.textContent.toLowerCase();
+    }
+});
+*/
+
+//practice event listener:
+/*
+mainH1.addEventListener('click', (event) => {
+    mainH1.style.color = 'red';
+});
+mainH1.addEventListener('mouseout', (event) => {
+    mainH1.style.color = '#484848';
+});
+*/
+
+//practic by creating a seperate event handeler that changes the list items color on click
+//..we could've just simply added this to the evnt handeler above but do this seperately for practice
+/* psudocode
+- get the list items on which the event will be performed
+- make sure we only target that event only (use if statement)
+- perform the desired action [change color]
+*/
+/*
+listSection.addEventListener('mouseover', (event) => {
+    if (event.target.tagName == "LI") {
+        event.target.style.color = 'tomato';
+    }
+});
+
+listSection.addEventListener('mouseout', (event) => {
+    if (event.target.tagName == 'LI') { //only apply this behaviour to the list elements and not others
+        event.target.style.color = 'purple';
+    }
+});
+*/
+
+//hide each button on click make use of parentNode
+listUl.addEventListener('click', (event) => { //onmouseover make uppercase
+    if (event.target.tagName == 'BUTTON') {
+        let li = event.target.parentNode;
+        let ul = li.parentNode;
+        ul.removeChild(li);
     }
 });
 
@@ -50,9 +94,12 @@ listSection.addEventListener('mouseout', (event) => { //onmousout make lowercase
 //write function to change text to the text we want to chagne
 descriptionButton.addEventListener("click", () => {
     "use strict";
-    descriptionP.innerHTML = descriptionInput.value + ":";
-    descriptionInput.value = '';
-
+    if (descriptionInput.value !== "") {
+        descriptionP.innerHTML = descriptionInput.value + ":";
+        descriptionInput.value = '';
+    } else {
+        alert("There is nothing in your input box. Try writing something in your input box and try agian");
+    }
 });
 
 //write function to toggle list menu on and off
@@ -89,4 +136,4 @@ removeItemButton.addEventListener('click', () => {
 //p.title = "List Description";
 
 //For getting and setting class attribute '.class' does not work. This is an exception. For the class we need to use ".className"
-//..e class we need to use ".className
+//..e class we need to use "
