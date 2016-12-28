@@ -94,12 +94,14 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
 //write function to change text to the text we want to chagne
 descriptionButton.addEventListener("click", () => {
     "use strict";
-    if (descriptionInput.value !== "") {
-        descriptionP.innerHTML = descriptionInput.value + ":";
-        descriptionInput.value = '';
-    } else {
-        alert("There is nothing in your input box. Try writing something in your input box and try agian");
+
+    //alert user if the input box is empty
+    if (descriptionInput.value === "") {
+        showNotification();
     }
+    descriptionP.innerHTML = descriptionInput.value + ":";
+    descriptionInput.value = '';
+
 });
 
 //write function to toggle list menu on and off
@@ -116,6 +118,13 @@ toggleButton.addEventListener('click', () => {
 
 //function to update list
 addItemButton.addEventListener('click', () => {
+    //alert user if the input box is empty
+    if (addItemInput.value === "") {
+        showNotification();
+        return; //exit function
+    }
+
+    //run the code below if there is a value in the input box
     let ul = document.querySelector('ul');
     let li = document.createElement('li');
     li.textContent = addItemInput.value;
@@ -129,6 +138,11 @@ removeItemButton.addEventListener('click', () => {
     let li = document.querySelector('li:last-child');
     ul.removeChild(li);
 });
+
+//write a validation function for users when they click
+//..try to add sometime from an empty input box
+showNotification = () => alert("There is nothing in your input box. Try writing something first and then try agian");
+
 
 //Lesson Notes:
 
