@@ -141,7 +141,7 @@ removeItemButton.addEventListener('click', () => {
 
 //write a validation function for users when they click
 //..try to add sometime from an empty input box
-showNotification = () => alert("There is nothing in your input box. Try writing something first and then try agian");
+showNotification = () => alert("There is nothing in your input box. Try writing something first and then try agian.");
 
 
 //Lesson Notes:
