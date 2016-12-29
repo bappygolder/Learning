@@ -77,13 +77,13 @@ listSection.addEventListener('mouseout', (event) => {
 */
 
 //remove list items on remove button click
-// listUl.addEventListener('click', (event) => { //onmouseover make uppercase
-//     if (event.target.tagName == 'BUTTON') {
-//         let li = event.target.parentNode;
-//         let ul = li.parentNode;
-//         ul.removeChild(li);
-//     }
-// });
+listUl.addEventListener('click', (event) => { //onmouseover make uppercase
+    if (event.target.tagName == 'BUTTON') {
+        let li = event.target.parentNode;
+        let ul = li.parentNode;
+        ul.removeChild(li);
+    }
+});
 
 
 //make all the list items upper case on hover
@@ -145,18 +145,21 @@ removeItemButton.addEventListener('click', () => {
 showNotification = () => alert("There is nothing in your input box. Try writing something first and then try agian.");
 
 //make a function that removes the "remove" button when clicked
+/*
 listUl.addEventListener('click', (event) => {
     if (event.target.tagName == 'BUTTON') {
-        console.log('clicked on: ' + event.target);
+        console.log('clicked on: ');
+        console.log(event.target);
         const li = event.target.parentNode;
-        console.log('Getting the parent node: ' + li);
+        console.log('Getting the parent node: ');
+        console.log(li);
         console.log('removing the button that is clicked');
         li.removeChild(event.target);
         // const li = event.target.parentNode;
         // li.removeChild(event.target);
     }
 });
-
+*/
 
 
 //Lesson Notes:
