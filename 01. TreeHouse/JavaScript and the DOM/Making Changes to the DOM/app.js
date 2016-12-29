@@ -147,9 +147,10 @@ showNotification = () => alert("There is nothing in your input box. Try writing 
 //make a function that removes the "remove" button when clicked
 listUl.addEventListener('click', (event) => {
     if (event.target.tagName == 'BUTTON') {
-        console.log(event.target);
+        console.log('clicked on: ' + event.target);
         const li = event.target.parentNode;
-        console.log(li);
+        console.log('Getting the parent node: ' + li);
+        console.log('removing the button that is clicked');
         li.removeChild(event.target);
         // const li = event.target.parentNode;
         // li.removeChild(event.target);
