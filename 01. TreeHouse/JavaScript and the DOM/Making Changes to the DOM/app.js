@@ -77,11 +77,24 @@ listSection.addEventListener('mouseout', (event) => {
 */
 
 //remove list items on remove button click
+//and move item up on click on up
 listUl.addEventListener('click', (event) => { //onmouseover make uppercase
-    if (event.target.tagName == 'BUTTON') {
+    if (event.target.tagName == 'BUTTON' && //check it is a button
+        event.target.className == 'removeBtn') { //..and it is the remove button
         let li = event.target.parentNode;
         let ul = li.parentNode;
         ul.removeChild(li);
+    }
+    if (event.target.tagName === 'BUTTON' &&
+        event.target.className === 'upBtn') {
+        let li = event.target.parentNode;
+        let prevLi = li.previousElementSibling;
+        let ul = li.parentNode;
+        if (!prevLi) {
+            showNotification('Can\'t move the top item.');
+        }
+        ul.insertBefore(li, prevLi);
+        console.log(prevLi);
     }
 });
 
@@ -128,7 +141,8 @@ addItemButton.addEventListener('click', () => {
     let ul = document.querySelector('ul'); //get ul
     let li = document.createElement('li'); //create li
     li.innerHTML = addItemInput.value + //add li value
-        '<button>Remove</button>'; //add remove button to the new list item
+        '<button class="upBtn">up</button>' +
+        '<button class="removeBtn">Remove</button>'; //add remove button to the new list item
     ul.appendChild(li);
     addItemInput.value = ''; //clear input after adding the item
 });
@@ -142,7 +156,10 @@ removeItemButton.addEventListener('click', () => {
 
 //write a validation function for users when they click
 //..try to add sometime from an empty input box
-showNotification = () => alert("There is nothing in your input box. Try writing something first and then try agian.");
+showNotification = (message = "There is nothing in your input box. Try writing something first and then try agian.") => {
+    alert(message);
+    return false;
+}
 
 //make a function that removes the "remove" button when clicked
 /*
