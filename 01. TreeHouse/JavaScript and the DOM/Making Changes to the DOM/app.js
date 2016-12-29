@@ -76,14 +76,14 @@ listSection.addEventListener('mouseout', (event) => {
 });
 */
 
-//hide each button on click make use of parentNode
-listUl.addEventListener('click', (event) => { //onmouseover make uppercase
-    if (event.target.tagName == 'BUTTON') {
-        let li = event.target.parentNode;
-        let ul = li.parentNode;
-        ul.removeChild(li);
-    }
-});
+//remove list items on remove button click
+// listUl.addEventListener('click', (event) => { //onmouseover make uppercase
+//     if (event.target.tagName == 'BUTTON') {
+//         let li = event.target.parentNode;
+//         let ul = li.parentNode;
+//         ul.removeChild(li);
+//     }
+// });
 
 
 //make all the list items upper case on hover
@@ -125,9 +125,10 @@ addItemButton.addEventListener('click', () => {
     }
 
     //run the code below if there is a value in the input box
-    let ul = document.querySelector('ul');
-    let li = document.createElement('li');
-    li.textContent = addItemInput.value;
+    let ul = document.querySelector('ul'); //get ul
+    let li = document.createElement('li'); //create li
+    li.innerHTML = addItemInput.value + //add li value
+        '<button>Remove</button>'; //add remove button to the new list item
     ul.appendChild(li);
     addItemInput.value = ''; //clear input after adding the item
 });
@@ -142,6 +143,19 @@ removeItemButton.addEventListener('click', () => {
 //write a validation function for users when they click
 //..try to add sometime from an empty input box
 showNotification = () => alert("There is nothing in your input box. Try writing something first and then try agian.");
+
+//make a function that removes the "remove" button when clicked
+listUl.addEventListener('click', (event) => {
+    if (event.target.tagName == 'BUTTON') {
+        console.log(event.target);
+        const li = event.target.parentNode;
+        console.log(li);
+        li.removeChild(event.target);
+        // const li = event.target.parentNode;
+        // li.removeChild(event.target);
+    }
+});
+
 
 
 //Lesson Notes:
