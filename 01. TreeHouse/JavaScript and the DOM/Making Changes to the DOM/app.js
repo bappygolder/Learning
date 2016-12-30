@@ -79,14 +79,12 @@ listSection.addEventListener('mouseout', (event) => {
 //remove list items on remove button click
 //and move item up on click on up
 listUl.addEventListener('click', (event) => { //onmouseover make uppercase
-    if (event.target.tagName == 'BUTTON' && //check it is a button
-        event.target.className == 'removeBtn') { //..and it is the remove button
+    if (event.target.className == 'removeBtn') { //..and it is the remove button
         let li = event.target.parentNode;
         let ul = li.parentNode;
         ul.removeChild(li);
     }
-    if (event.target.tagName === 'BUTTON' &&
-        event.target.className === 'upBtn') {
+    if (event.target.className === 'upBtn') {
         let li = event.target.parentNode;
         let prevLi = li.previousElementSibling;
         let ul = li.parentNode;
