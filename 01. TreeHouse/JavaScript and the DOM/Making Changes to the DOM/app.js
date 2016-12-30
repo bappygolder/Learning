@@ -160,7 +160,6 @@ descriptionButton.addEventListener("click", () => {
     }
     descriptionP.innerHTML = descriptionInput.value + ":";
     descriptionInput.value = '';
-
 });
 
 //write function to toggle list menu on and off
