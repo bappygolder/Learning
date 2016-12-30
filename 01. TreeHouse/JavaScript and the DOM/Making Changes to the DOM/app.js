@@ -78,12 +78,16 @@ listSection.addEventListener('mouseout', (event) => {
 
 //remove list items on remove button click
 //and move item up on click on up
+//move item down on click of down button
 listUl.addEventListener('click', (event) => { //onmouseover make uppercase
-    if (event.target.className == 'removeBtn') { //..and it is the remove button
+    //remove button functionality
+    if (event.target.className === 'removeBtn') { //..and it is the remove button
         let li = event.target.parentNode;
         let ul = li.parentNode;
         ul.removeChild(li);
     }
+
+    //up button functionality
     if (event.target.className === 'upBtn') {
         let li = event.target.parentNode;
         let prevLi = li.previousElementSibling;
@@ -92,7 +96,38 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
             showNotification('Can\'t move the top item.');
         }
         ul.insertBefore(li, prevLi);
-        console.log(prevLi);
+    }
+
+    //down button functionality
+    if (event.target.className === 'downBtn') {
+        let clickedLi = event.target.parentNode;
+        //let nextOfNextLi = li.nextElementSibling.nextElementSibling;
+        let ul = clickedLi.parentNode;
+        //if it is the last item (or there is no next sibling) then show notifictaion
+        if (!clickedLi.nextElementSibling) {
+            showNotification('Can\'t move the last item.');
+            return;
+        } else if (true) { //it is a second to last item
+            //add a list item to the end of the list
+            let tempLi = document.createElement('LI');
+            ul.appendChild(tempLi);
+
+            //insert clicked item before the temp list item
+            ul.insertBefore(clickedLi, tempLi);
+
+            //remove the addde item
+            ul.removeChild(tempLi);
+            return;
+        } else { //if it is not the last item then move item down
+            //get the second sibling down
+            //insert our element before that
+        }
+
+        //show notification if the next sibling is not available
+        // if (lastLi.lastElementChild === 'null') {
+        //     showNotification('Can\'t move the last item down. Try other items.');
+        // }
+        // console.log(ul.lastElementChild.nextElementSibling);
     }
 });
 
@@ -139,7 +174,8 @@ addItemButton.addEventListener('click', () => {
     let ul = document.querySelector('ul'); //get ul
     let li = document.createElement('li'); //create li
     li.innerHTML = addItemInput.value + //add li value
-        '<button class="upBtn">up</button>' +
+        '<button class="upBtn">Up</button>' +
+        '<button class="downBtn">Down</button>' +
         '<button class="removeBtn">Remove</button>'; //add remove button to the new list item
     ul.appendChild(li);
     addItemInput.value = ''; //clear input after adding the item
@@ -157,7 +193,7 @@ removeItemButton.addEventListener('click', () => {
 showNotification = (message = "There is nothing in your input box. Try writing something first and then try agian.") => {
     alert(message);
     return false;
-}
+};
 
 //make a function that removes the "remove" button when clicked
 /*
