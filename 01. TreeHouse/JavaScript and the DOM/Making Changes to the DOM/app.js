@@ -101,13 +101,13 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
     //down button functionality
     if (event.target.className === 'downBtn') {
         let clickedLi = event.target.parentNode;
-        //let nextOfNextLi = li.nextElementSibling.nextElementSibling;
         let ul = clickedLi.parentNode;
-        //if it is the last item (or there is no next sibling) then show notifictaion
-        if (!clickedLi.nextElementSibling) {
+        //if it is the last item
+        if (clickedLi === listUl.lastChild) {
             showNotification('Can\'t move the last item.');
             return;
-        } else if (true) { //it is a second to last item
+        } else if (clickedLi === //it is a second to last item
+            listUl.lastElementChild.previousElementSibling) {
             //add a list item to the end of the list
             let tempLi = document.createElement('LI');
             ul.appendChild(tempLi);
@@ -117,17 +117,14 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
 
             //remove the addde item
             ul.removeChild(tempLi);
-            return;
-        } else { //if it is not the last item then move item down
+        } else { //if it is not the last or second to last item
             //get the second sibling down
-            //insert our element before that
+            let nextOfNextLi = clickedLi.nextElementSibling.nextElementSibling;
+
+            //insert our element before the second sibling down
+            listUl.insertBefore(clickedLi, nextOfNextLi);
         }
 
-        //show notification if the next sibling is not available
-        // if (lastLi.lastElementChild === 'null') {
-        //     showNotification('Can\'t move the last item down. Try other items.');
-        // }
-        // console.log(ul.lastElementChild.nextElementSibling);
     }
 });
 
