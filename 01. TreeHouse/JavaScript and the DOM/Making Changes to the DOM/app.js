@@ -94,38 +94,54 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
         let ul = li.parentNode;
         if (!prevLi) {
             showNotification('Can\'t move the top item.');
+        } else {
+            ul.insertBefore(li, prevLi);
         }
-        ul.insertBefore(li, prevLi);
     }
+    /*
+        //down button functionality
+        if (event.target.className === 'downBtn') {
+            let clickedLi = event.target.parentNode;
+            let ul = clickedLi.parentNode;
+            //if it is the last item
+            if (clickedLi === listUl.lastChild) {
+                showNotification('Can\'t move the last item.');
+                return;
+            } else if (clickedLi === //it is a second to last item
+                listUl.lastElementChild.previousElementSibling) {
+                //add a list item to the end of the list
+                let tempLi = document.createElement('LI');
+                ul.appendChild(tempLi);
 
-    //down button functionality
-    if (event.target.className === 'downBtn') {
+                //insert clicked item before the temp list item
+                ul.insertBefore(clickedLi, tempLi);
+
+                //remove the addde item
+                ul.removeChild(tempLi);
+            } else { //if it is not the last or second to last item
+                //get the second sibling down
+                let nextOfNextLi = clickedLi.nextElementSibling.nextElementSibling;
+
+                //insert our element before the second sibling down
+                listUl.insertBefore(clickedLi, nextOfNextLi);
+            }
+        }
+        */
+
+    //another way to solve the down arrow issue
+    //..instead of thinking about moving the clicked element
+    //..we can think about moving the element after the clicked element before the clicked element
+    if (event.target.className === 'downBtn') { //it is not the last element do this
         let clickedLi = event.target.parentNode;
+        let nextLi = clickedLi.nextElementSibling;
         let ul = clickedLi.parentNode;
-        //if it is the last item
-        if (clickedLi === listUl.lastChild) {
+        if (nextLi) {
+            ul.insertBefore(nextLi, clickedLi);
+        } else {
             showNotification('Can\'t move the last item.');
-            return;
-        } else if (clickedLi === //it is a second to last item
-            listUl.lastElementChild.previousElementSibling) {
-            //add a list item to the end of the list
-            let tempLi = document.createElement('LI');
-            ul.appendChild(tempLi);
-
-            //insert clicked item before the temp list item
-            ul.insertBefore(clickedLi, tempLi);
-
-            //remove the addde item
-            ul.removeChild(tempLi);
-        } else { //if it is not the last or second to last item
-            //get the second sibling down
-            let nextOfNextLi = clickedLi.nextElementSibling.nextElementSibling;
-
-            //insert our element before the second sibling down
-            listUl.insertBefore(clickedLi, nextOfNextLi);
         }
-
     }
+
 });
 
 
