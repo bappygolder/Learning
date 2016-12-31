@@ -29,6 +29,10 @@ addButtonsToListItem = (li) => {
     li.appendChild(down);
 
     //create and add up buttons
+    let remove = document.createElement('button');
+    remove.className = 'removeBtn';
+    remove.textContent = 'Remove';
+    li.appendChild(remove);
 };
 
 
