@@ -21,8 +21,8 @@ const firstLi = listUl.firstElementChild;
 const LastLi = listUl.lastElementChild;
 
 //change the color for the first and the last titem
-firstLi.style.backgroundColor = 'lightskyblue';
-LastLi.style.backgroundColor = 'lightsteelblue';
+// firstLi.style.backgroundColor = 'lightskyblue';
+// LastLi.style.backgroundColor = 'lightsteelblue';
 
 
 //create buttons for our list item/s
@@ -50,6 +50,10 @@ addButtonsToListItem = (li) => {
 for (var i = 0; i < listItems.length; i++) {
     addButtonsToListItem(listItems[i]);
 }
+
+const latestListUl = listSection.querySelector('ul');
+const firstUpBtn = latestListUl.firstElementChild.querySelector('.upBtn');
+
 
 
 //create upper and lower case from an array
@@ -174,12 +178,24 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
         let nextLi = clickedLi.nextElementSibling;
         let ul = clickedLi.parentNode;
         if (nextLi) { //if next list item exists or the nextLi != null
-            ul.insertBefore(nextLi, clickedLi); //insert the next list item before the clicked ilement
-        } else { //show notification if it is the last item
+            if (clickedLi === listUl.firstElementChild) { //if it is the first list item then make the up button visible before moving the the item down
+                var latestUl = clickedLi.parentNode; //get the latest list
+                latestFirstUpBtn = latestUl.firstElementChild.querySelector('.upBtn');
+                latestSecondUpBtn = latestUl.firstElementChild.nextElementSibling.querySelector('.upBtn');
+                latestFirstUpBtn.style.visibility = 'visible'; //make the up button visible before moving it down
+                //let secondUpBtn = latestListUl.firstElementChild.nextElementSibling.querySelector('.upBtn'); //get the next up button
+                latestSecondUpBtn.style.visibility = 'hidden'; //hide the next up button before moving it up
+                //secondUpBtn = latestListUl.firstElementChild.nextElementSibling.querySelector('.upBtn'); //get the next up button
+                //firstUpBtn.style.visibility = 'visible'; //hide the up button for the next item before moving it up
+                ul.insertBefore(nextLi, clickedLi); //insert the next list item before the clicked ilement
+            } else {
+                ul.insertBefore(nextLi, clickedLi); //insert the next list item before the clicked ilement
+            }
+        } else {
+            //show notification if it is the last item
             showNotification('Can\'t move the last item.');
         }
     }
-
 });
 
 
@@ -224,6 +240,7 @@ addItemButton.addEventListener('click', () => {
         //     '<button class="removeBtn">Remove</button>'; //add remove button to the new list item
         addButtonsToListItem(li);
         ul.appendChild(li);
+        removeFirstAndLastMvBtn();
         addItemInput.value = ''; //clear input after adding the item
     } else { //alert user if the input box is empty
         showNotification();
@@ -263,9 +280,29 @@ listUl.addEventListener('click', (event) => {
 */
 
 
-//Lesson Notes:
+//hide the last down button and the first up button
+removeFirstAndLastMvBtn = () => {
+    // const latestListUl = listSection.querySelector('ul');
+    // const firstUpBtn = latestListUl.firstElementChild.querySelector('.upBtn');
+    const firstDownBtn = latestListUl.firstElementChild.querySelector('.downBtn');
+    const lastDownBtn = latestListUl.lastElementChild.querySelector('.downBtn');
 
-//we can get and set element attributes, the following is an example of setting attribute. This is best done directly in HTML but this is a good example of how attributes can be set using venilla JS
-//p.title = "List Description";
+    lastDownBtn.style.display = 'none';
+};
 
-//For getting and setting class attribute '.class' does not work. This is an exception. For the class we need to use ".className"
+//remove the first up button
+//takes a list item and removes the first up button from the list
+removeUpBtn = () => {
+    //get the first up button of the list item
+
+    //hide the firs up button
+    firstUpBtn.style.visibility = 'hidden';
+    //firstDownBtn.style.marginLeft = 'auto';
+};
+removeUpBtn();
+
+
+
+
+
+//removeFirstAndLastMvBtn();
