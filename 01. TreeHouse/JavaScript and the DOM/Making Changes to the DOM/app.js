@@ -54,6 +54,7 @@ for (var i = 0; i < listItems.length; i++) {
 let latestListUl = listSection.querySelector('ul');
 let firstUpBtn = latestListUl.firstElementChild.querySelector('.upBtn');
 let SecondUpBtn = latestListUl.firstElementChild.nextElementSibling.querySelector('.upBtn');
+let secondLstItm = latestListUl.firstElementChild.nextElementSibling;
 
 
 
@@ -131,15 +132,44 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
     }
 
     //up button functionality
-    if (event.target.className === 'upBtn') {
-        let li = event.target.parentNode;
-        let prevLi = li.previousElementSibling;
-        let ul = li.parentNode;
-        if (!prevLi) {
-            showNotification('Can\'t move the top item.');
-        } else {
-            ul.insertBefore(li, prevLi);
+    if (event.target.className == 'upBtn') {
+        let clickedLi = event.target.parentNode;
+        let prevLi = clickedLi.previousElementSibling;
+        let ul = clickedLi.parentNode;
+        let secondListItem = ul.firstElementChild.nextElementSibling.querySelector('.upBtn');
+
+        //if (prevLi) { //if it is not the first item
+        if (clickedLi == secondListItem) { //if it is the second list item
+            SecondUpBtn.style.visibility = 'hidden'; //hide second 'up' button back again [at this point this is invisible]
+            firstUpBtn.style.visibility = 'visible'; //add the second 'up' button in preparation to position it first
+            ul.insertBefore(clickedLi, prevLi); //insert the previous list before the clicked list item
+            //we swaped the list items so swap the position of the variables as well
+            //ul = clickedLi.parentNode;
+            //clickedLi = event.target.parentNode; //update the item that was clicked
+            //clickedLi = event.target.parentNode;
+            //ul = clickedLi.parentNode;
+            //SecondUpBtn = ul.firstElementChild.nextElementSibling.querySelector('.upBtn');
+            //prevLi = SecondUpBtn.previousElementSibling;
+
+            //update the second button
+            // let tempLi = prevLi;
+            // prevLi = clickedLi;
+            // clickedLi = tempLi;
+        } else { //for all the other list items
+            SecondUpBtn.style.visibility = 'hidden'; //hide second 'up' button back again [at this point this is invisible]
+            firstUpBtn.style.visibility = 'visible'; //add the second 'up' button in preparation to position it first
+            ul.insertBefore(clickedLi, prevLi); //just move their next sibling one level up
         }
+        //} //else {
+        //showNotification('Can\'t move the top item.');
+        //}
+        //update the position of all the list items
+
+        //firstUpBtn = ul.firstElementChild.querySelector('.upBtn');
+        //prevLi = clickedLi.previousElementSibling;
+        //prevLi = clickedLi.previousElementSibling;
+        //SecondUpBtn = ul.firstElementChild.nextElementSibling.querySelector('.upBtn');
+        //prevLi = clickedLi.previousElementSibling;
     }
     /*
         //down button functionality
@@ -189,7 +219,7 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
                 ul.insertBefore(nextLi, clickedLi); //insert the next list item before the clicked ilement
             }
 
-            //update the positoin of all the variables
+            //update the position of all the list items
             ul = clickedLi.parentNode;
             firstUpBtn = ul.firstElementChild.querySelector('.upBtn');
             SecondUpBtn = ul.firstElementChild.nextElementSibling.querySelector('.upBtn');
@@ -237,9 +267,6 @@ addItemButton.addEventListener('click', () => {
         let ul = document.querySelector('ul'); //get ul
         let li = document.createElement('li'); //create li
         li.innerHTML = addItemInput.value; //+ //add li value
-        //     '<button class="upBtn">Up</button>' +
-        //     '<button class="downBtn">Down</button>' +
-        //     '<button class="removeBtn">Remove</button>'; //add remove button to the new list item
         addButtonsToListItem(li);
         ul.appendChild(li);
         removeFirstAndLastMvBtn();
@@ -304,7 +331,4 @@ removeUpBtn = () => {
 removeUpBtn();
 
 
-
-
-
-//removeFirstAndLastMvBtn();
+//end
