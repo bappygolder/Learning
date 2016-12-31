@@ -51,8 +51,9 @@ for (var i = 0; i < listItems.length; i++) {
     addButtonsToListItem(listItems[i]);
 }
 
-const latestListUl = listSection.querySelector('ul');
-const firstUpBtn = latestListUl.firstElementChild.querySelector('.upBtn');
+let latestListUl = listSection.querySelector('ul');
+let firstUpBtn = latestListUl.firstElementChild.querySelector('.upBtn');
+let SecondUpBtn = latestListUl.firstElementChild.nextElementSibling.querySelector('.upBtn');
 
 
 
@@ -174,27 +175,28 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
     //..instead of thinking about moving the clicked element
     //..we can think about moving the element after the clicked element before the clicked element
     if (event.target.className === 'downBtn') { //if down button is clicked
+
         let clickedLi = event.target.parentNode;
         let nextLi = clickedLi.nextElementSibling;
         let ul = clickedLi.parentNode;
+
         if (nextLi) { //if next list item exists or the nextLi != null
-            if (clickedLi === listUl.firstElementChild) { //if it is the first list item then make the up button visible before moving the the item down
-                var latestUl = clickedLi.parentNode; //get the latest list
-                latestFirstUpBtn = latestUl.firstElementChild.querySelector('.upBtn');
-                latestSecondUpBtn = latestUl.firstElementChild.nextElementSibling.querySelector('.upBtn');
-                latestFirstUpBtn.style.visibility = 'visible'; //make the up button visible before moving it down
-                //let secondUpBtn = latestListUl.firstElementChild.nextElementSibling.querySelector('.upBtn'); //get the next up button
-                latestSecondUpBtn.style.visibility = 'hidden'; //hide the next up button before moving it up
-                //secondUpBtn = latestListUl.firstElementChild.nextElementSibling.querySelector('.upBtn'); //get the next up button
-                //firstUpBtn.style.visibility = 'visible'; //hide the up button for the next item before moving it up
-                ul.insertBefore(nextLi, clickedLi); //insert the next list item before the clicked ilement
+            if (clickedLi === listUl.firstElementChild) { //if it is the first list item then make the 'up' button visible before moving the the item down
+                firstUpBtn.style.visibility = 'visible'; //add first 'up' button back again [at this point this is invisible]
+                SecondUpBtn.style.visibility = 'hidden'; //hide the second 'up' button in preparation to position it first
+                ul.insertBefore(nextLi, clickedLi); //reposition the two list items
             } else {
                 ul.insertBefore(nextLi, clickedLi); //insert the next list item before the clicked ilement
             }
-        } else {
-            //show notification if it is the last item
-            showNotification('Can\'t move the last item.');
-        }
+
+            //update the positoin of all the variables
+            ul = clickedLi.parentNode;
+            firstUpBtn = ul.firstElementChild.querySelector('.upBtn');
+            SecondUpBtn = ul.firstElementChild.nextElementSibling.querySelector('.upBtn');
+        } //else {
+        //show notification if it is the last item
+        //     showNotification('Can\'t move the last item.');
+        // }
     }
 });
 
