@@ -10,7 +10,9 @@ const descriptionButton = document.querySelector('button.description');
 const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const removeItemButton = document.querySelector('button.removeItemButton');
-const listItems = listUl.querySelectorAll('li');
+const listItems = listUl.children;
+//const listItems = listUl.querySelectorAll('li');
+//can also use the following to get list itemsArray
 const mainH1 = document.querySelector('#myHeading');
 //const = document.querySelector('');
 
