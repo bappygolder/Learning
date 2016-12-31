@@ -10,7 +10,7 @@ const descriptionButton = document.querySelector('button.description');
 const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const removeItemButton = document.querySelector('button.removeItemButton');
-const listItems = document.querySelectorAll('li');
+const listItems = listUl.querySelectorAll('li');
 const mainH1 = document.querySelector('#myHeading');
 //const = document.querySelector('');
 
@@ -34,6 +34,11 @@ addButtonsToListItem = (li) => {
     remove.textContent = 'Remove';
     li.appendChild(remove);
 };
+
+//add buttons to existing list items
+for (var i = 0; i < listItems.length; i++) {
+    addButtonsToListItem(listItems[i]);
+}
 
 
 //create upper and lower case from an array
@@ -175,13 +180,13 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
 //write function to change text to the text we want to chagne
 descriptionButton.addEventListener("click", () => {
     "use strict";
-
-    //alert user if the input box is empty
-    if (descriptionInput.value === "") {
+    if (descriptionInput.value !== "") {
+        descriptionP.innerHTML = descriptionInput.value + ":";
+        descriptionInput.value = '';
+    } else {
+        //alert user if the input box is empty
         showNotification();
     }
-    descriptionP.innerHTML = descriptionInput.value + ":";
-    descriptionInput.value = '';
 });
 
 //write function to toggle list menu on and off
@@ -198,22 +203,21 @@ toggleButton.addEventListener('click', () => {
 
 //function to update list
 addItemButton.addEventListener('click', () => {
-    //alert user if the input box is empty
-    if (addItemInput.value === "") {
+    if (addItemInput.value !== "") {
+        //run the code below if there is a value in the input box
+        let ul = document.querySelector('ul'); //get ul
+        let li = document.createElement('li'); //create li
+        li.innerHTML = addItemInput.value; //+ //add li value
+        //     '<button class="upBtn">Up</button>' +
+        //     '<button class="downBtn">Down</button>' +
+        //     '<button class="removeBtn">Remove</button>'; //add remove button to the new list item
+        addButtonsToListItem(li);
+        ul.appendChild(li);
+        addItemInput.value = ''; //clear input after adding the item
+    } else { //alert user if the input box is empty
         showNotification();
         return; //exit function
     }
-
-    //run the code below if there is a value in the input box
-    let ul = document.querySelector('ul'); //get ul
-    let li = document.createElement('li'); //create li
-    li.innerHTML = addItemInput.value; //+ //add li value
-    //     '<button class="upBtn">Up</button>' +
-    //     '<button class="downBtn">Down</button>' +
-    //     '<button class="removeBtn">Remove</button>'; //add remove button to the new list item
-    addButtonsToListItem(li);
-    ul.appendChild(li);
-    addItemInput.value = ''; //clear input after adding the item
 });
 
 //remove the last item from the list on button click
@@ -254,4 +258,3 @@ listUl.addEventListener('click', (event) => {
 //p.title = "List Description";
 
 //For getting and setting class attribute '.class' does not work. This is an exception. For the class we need to use ".className"
-//..e class we need to use "
