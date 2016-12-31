@@ -16,6 +16,12 @@ const listItems = listUl.children;
 const mainH1 = document.querySelector('#myHeading');
 //const = document.querySelector('');
 
+//practicing with first and last element childs
+const firstLi = listUl.firstElementChild;
+
+//change the color for the first and the last titem
+
+
 //create buttons for our list item/s
 addButtonsToListItem = (li) => {
     //create and add up buttons
