@@ -131,13 +131,13 @@ listUl.addEventListener('click', (event) => { //onmouseover make uppercase
     //another way to solve the down arrow issue
     //..instead of thinking about moving the clicked element
     //..we can think about moving the element after the clicked element before the clicked element
-    if (event.target.className === 'downBtn') { //it is not the last element do this
+    if (event.target.className === 'downBtn') { //if down button is clicked
         let clickedLi = event.target.parentNode;
         let nextLi = clickedLi.nextElementSibling;
         let ul = clickedLi.parentNode;
-        if (nextLi) {
-            ul.insertBefore(nextLi, clickedLi);
-        } else {
+        if (nextLi) { //if next list item exists or the nextLi != null
+            ul.insertBefore(nextLi, clickedLi); //insert the next list item before the clicked ilement
+        } else { //show notification if it is the last item
             showNotification('Can\'t move the last item.');
         }
     }
