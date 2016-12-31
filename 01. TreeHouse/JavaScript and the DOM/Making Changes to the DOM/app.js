@@ -18,8 +18,11 @@ const mainH1 = document.querySelector('#myHeading');
 
 //practicing with first and last element childs
 const firstLi = listUl.firstElementChild;
+const LastLi = listUl.lastElementChild;
 
 //change the color for the first and the last titem
+firstLi.style.backgroundColor = 'lightskyblue';
+LastLi.style.backgroundColor = 'lightsteelblue';
 
 
 //create buttons for our list item/s
