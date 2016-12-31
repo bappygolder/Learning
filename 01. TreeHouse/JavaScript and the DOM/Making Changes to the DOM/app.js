@@ -14,6 +14,19 @@ const listItems = document.querySelectorAll('li');
 const mainH1 = document.querySelector('#myHeading');
 //const = document.querySelector('');
 
+//create buttons for our list item/s
+addButtonsToListItem = (li) => {
+    //create and add up buttons
+    let up = document.createElement('button');
+    up.className = 'up';
+    up.textContent = 'Up';
+    li.appendChild(up);
+
+    //create and add up buttons
+    //create and add up buttons
+};
+
+
 //create upper and lower case from an array
 //itemsArray - an array that holds all the elemetns
 //pos - position of the array where we menipulate value
@@ -185,10 +198,10 @@ addItemButton.addEventListener('click', () => {
     //run the code below if there is a value in the input box
     let ul = document.querySelector('ul'); //get ul
     let li = document.createElement('li'); //create li
-    li.innerHTML = addItemInput.value + //add li value
-        '<button class="upBtn">Up</button>' +
-        '<button class="downBtn">Down</button>' +
-        '<button class="removeBtn">Remove</button>'; //add remove button to the new list item
+    li.innerHTML = addItemInput.value //+ //add li value
+        //     '<button class="upBtn">Up</button>' +
+        //     '<button class="downBtn">Down</button>' +
+        //     '<button class="removeBtn">Remove</button>'; //add remove button to the new list item
     ul.appendChild(li);
     addItemInput.value = ''; //clear input after adding the item
 });
@@ -232,3 +245,4 @@ listUl.addEventListener('click', (event) => {
 
 //For getting and setting class attribute '.class' does not work. This is an exception. For the class we need to use ".className"
 //..e class we need to use "
+need to use "
