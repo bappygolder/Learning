@@ -23,6 +23,11 @@ addButtonsToListItem = (li) => {
     li.appendChild(up);
 
     //create and add up buttons
+    let down = document.createElement('button');
+    down.className = 'downBtn';
+    down.textContent = 'Down';
+    li.appendChild(down);
+
     //create and add up buttons
 };
 
