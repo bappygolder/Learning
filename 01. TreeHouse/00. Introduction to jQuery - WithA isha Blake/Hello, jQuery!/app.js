@@ -19,3 +19,19 @@ note: they are same as class*/
 //make all the odd elements in the second list background blue
 const list2 = $('.ul2 li');
 list2.not(":even").css('background-color', 'steelblue').css('color', '#e2e2e2');
+
+//show link value in console
+console.log($('a').attr('href'));
+
+//on button click update link attribute to BG home page
+$('.changeLink').click(() => {
+    $('a').attr('href', 'http://bappygolder.com/');
+    console.log($('a').attr('href'));
+});
+
+//on click of reset page reset the link of the link
+//..not working
+// $('.resetBtn').click(() => {
+//     $('a').attr('herf', 'https://www.google.com');
+//     console.log('Linke reset: ' + $('a').attr('href'));
+// });
