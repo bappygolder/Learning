@@ -35,3 +35,7 @@ $('.changeLink').click(() => {
 //     $('a').attr('herf', 'https://www.google.com');
 //     console.log('Linke reset: ' + $('a').attr('href'));
 // });
+
+//get all the the site links that are not part of our website to open in a new tab
+$('a').not("href^='file:///C:/Users/'") //select all the links that are not part of our root domain
+    .attr('target', '_blank'); //open then in new tab
