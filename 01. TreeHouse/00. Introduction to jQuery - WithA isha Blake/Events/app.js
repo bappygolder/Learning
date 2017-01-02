@@ -12,3 +12,18 @@ $('body').click((event) => {
 - a call back function is never called/written to execute later in the code. Rather they excuted based on an event that happens later. Due to this a call back function often have the following two parameters
   1. At what event the call back function will be run (or the event)
   2. What will be done or the function that will be run*/
+
+
+//practice using foreach to loop over an array and show the values in the console
+const arrA = [5, 14, 23, 32];
+
+//write a function to displey the elements of the array
+logArrayElement = (element, index, array) => {
+    console.log('arrA[' + index + ']' + ' = ' + element);
+};
+
+arrA.forEach(logArrayElement);
+
+// arrA.forEach((element) => {
+//     console.log('Test' + arrA.element);
+// });
