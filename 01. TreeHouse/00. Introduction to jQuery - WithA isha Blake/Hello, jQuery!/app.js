@@ -39,3 +39,8 @@ $('.changeLink').click(() => {
 //get all the the site links that are not part of our website to open in a new tab
 $('a').not("[href^='file:///C:/Users/']") //select all the links that are not part of our root domain
     .attr('target', '_blank'); //open then in new tab
+
+//on button click show the even that ran on the button
+$('.changeLink').on('click', (evevnt) => {
+    console.log(event);
+});
