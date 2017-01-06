@@ -27,3 +27,11 @@ arrA.forEach(logArrayElement);
 // arrA.forEach((element) => {
 //     console.log('Test' + arrA.element);
 // });
+
+
+//write a function that changes the elements of a page to it's HTML
+$('ul').click(function() {
+    var htmlString = $(this).html();
+    $(this).text(htmlString);
+    // alert('hi');
+});

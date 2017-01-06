@@ -11,22 +11,22 @@ const sizeButton = document.getElementById('sizeButton');
 
 //change heading color
 myButton.addEventListener('click', () => {
-  myHeading.style.color = myInput.value;
+    myHeading.style.color = myInput.value;
 });
 
 //change size
 sizeButton.addEventListener('click', () => {
-  myHeading.style.fontSize = sizeInput.value + 'px';
+    myHeading.style.fontSize = sizeInput.value + 'px';
 });
-  
-  
-//reset button  
+
+
+//reset button
 reset.addEventListener('click', () => {
-  //revert styles back to original
-  myHeading.style.color = originalHeadingColor;
-  myHeading.style.fontSize = originalHeadingSize;
-  
-  //reset input field values
-  myInput.value = "";
-  sizeInput.value = "";  
+    //revert styles back to original
+    myHeading.style.color = originalHeadingColor;
+    myHeading.style.fontSize = originalHeadingSize;
+
+    //reset input field values
+    myInput.value = "";
+    sizeInput.value = "";
 });
