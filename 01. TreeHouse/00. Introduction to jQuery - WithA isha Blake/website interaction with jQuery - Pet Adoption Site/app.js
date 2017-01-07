@@ -22,7 +22,14 @@ $('#add-pet').on('click', function() {
     console.log($petNotes);
 
     //format the information in the fields in correct HTML
+    var $newPet = '<section class="six columns"><div class="card"><p><strong>Name:</strong> ' + $petName +
+        '</p><p><strong>Species:</strong> ' + $petSpecies +
+        '</p><p><strong>Notes:</strong> ' + $petNotes +
+        '</p><span class="close">&times;</span></div></section>';
+
     //add the HTML on the page
+    $('#posted-pets').append($newPet);
+
 
 
 });
