@@ -1,5 +1,13 @@
 /*jshint esversion: 6*/
 
+//when document is loded make everythign smoothly fade in to the page
+$(document).ready(function() {
+    $('html').fadeIn(1000);
+});
+
+
+
+
 $('.loc').hover( // on mouse hover
     function() {
         //console.log('mouse enter');
