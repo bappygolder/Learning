@@ -1,0 +1,2 @@
+$('#one').empty();
+$('#two').remove();
