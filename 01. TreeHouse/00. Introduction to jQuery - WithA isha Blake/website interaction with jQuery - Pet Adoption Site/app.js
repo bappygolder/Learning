@@ -1,9 +1,9 @@
 /*jshint esversion: 6*/
 
 //when document is loded make everythign smoothly fade in to the page
-$(document).ready(function() {
-    $('html').fadeIn(1000);
-});
+// $(document).ready(function() {
+//     $('html').fadeIn(1000);
+// });
 
 
 
@@ -37,7 +37,13 @@ $('#add-pet').on('click', function() {
 
     //add the HTML on the page
     $('#posted-pets').append($newPet);
+});
+
+//puppy image faddeIn
+$('img').css('display', 'none').fadeIn('slow');
 
 
-
+//apply selected highlight on/off design based on clicks
+$('.card').on('click', function() {
+    $(this).toggleClass('selected');
 });
