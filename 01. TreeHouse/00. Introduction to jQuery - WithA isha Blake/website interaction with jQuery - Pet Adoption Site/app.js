@@ -1,12 +1,5 @@
 /*jshint esversion: 6*/
-
-//when document is loded make everythign smoothly fade in to the page
-// $(document).ready(function() {
-//     $('html').fadeIn(1000);
-// });
-
-
-
+//local project location: file:///C:/Users/Bappy%20Golder/Desktop/Projects/Learning/01.%20TreeHouse/00.%20Introduction%20to%20jQuery%20-%20WithA%20isha%20Blake/website%20interaction%20with%20jQuery%20-%20Pet%20Adoption%20Site/index.html
 
 $('.loc').hover( // on mouse hover
     function() {

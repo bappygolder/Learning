@@ -20,9 +20,13 @@ var students = [{
     name: "Pat"
 }];
 
-//show the data through for each loop
+//loop through the array to show each name
+// students.forEach(function(elem) {
+//     console.log(elem.name);
+// });
+
 students.forEach(function(elem) {
-    console.log(elem.name);
+  console.log(elem.name);
 });
 
 // console.log('Ben');
