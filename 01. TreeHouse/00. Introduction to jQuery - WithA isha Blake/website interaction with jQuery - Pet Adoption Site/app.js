@@ -38,6 +38,11 @@ $('#add-pet').on('click', function() {
     $('#pet-name').val('');
     $('#pet-species').val('Dog');
     $('#pet-notes').val('');
+
+    //remove pets on cross button click
+    $('.close').on('click', function() {
+      $(this).parent().remove();
+    });
 });
 
 //puppy image faddeIn
